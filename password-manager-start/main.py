@@ -74,7 +74,7 @@ def find_password():
             if web_text in data_s.keys():
                 user_text = data_s[web_text]["email"]
                 pass_text = data_s[web_text]["password"]
-                messagebox.showinfo(title=f"{web_text}", message=f"User: {user_text}\nPasword: {pass_text}")
+                messagebox.showinfo(title=f"{web_text}", message=f"User: {user_text}\nPassword: {pass_text}")
             else:
                 messagebox.showinfo(title="Error", message=f"No details fort the {web_text} exists.")
 
