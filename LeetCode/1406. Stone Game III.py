@@ -59,6 +59,7 @@ class Solution:
                     break
                 take += stoneValue[i + k - 1]
                 best = max(best, take - dp[i + k])
+            print(take)
             dp[i] = best
 
         if dp[0] > 0:
