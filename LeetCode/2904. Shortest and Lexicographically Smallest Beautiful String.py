@@ -58,29 +58,43 @@ class Solution:
     def shortestBeautifulSubstring(self, s: str, k: int) -> str:
         ans = ""
         n = len(s)
-
         for i in range(n):
-
             oneCnt = 0
             cur = ""
-
             for j in range(i, n):
-
                 cur += s[j]
-
                 if s[j] == '1':
                     oneCnt += 1
-
                 # More than k ones can never become valid again
                 if oneCnt > k:
                     break
-
                 if oneCnt == k:
                     if ans == "" or len(cur) < len(ans) or (len(cur) == len(ans) and cur < ans):
                         ans = cur
-
         return ans
+    
+class Solution:
+    def shortestBeautifulSubstring(self, s: str, k: int) -> str:
+        cnt1 = 0 
+        left = 0 
+        ans = s 
+        if s.count('1') < k:
+            return ''
 
+        for right, x in enumerate(s):
+            if x == '1':
+                cnt1 += int(x)
+
+            while cnt1 > k or s[left] == '0':
+
+                cnt1 -= int(s[left])
+                left += 1 
+            if cnt1 == k:
+                 t = s[left: right + 1]
+                 if len(t) < len(ans) or len(t) == len(ans) and t < ans:
+                    ans = t
+        return ans 
+    
 if __name__ == "__main__":
     s = Solution()
     print(s.shortestBeautifulSubstring("100011001", 3))  # Output: "11001"
